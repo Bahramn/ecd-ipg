@@ -1,0 +1,59 @@
+{
+    "name": "bahramn/ecd-ipg",
+    "description": "ECD IPG Package",
+    "keywords": [
+        "bahramn",
+        "ecd-ipg"
+    ],
+    "homepage": "https://github.com/bahramn/ecd-ipg",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Bahram Nedaei",
+            "email": "bahramnedaei@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-exif": "*",
+        "ext-fileinfo": "*",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.2",
+        "illuminate/database": "^7.0|^8.0",
+        "illuminate/support": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "orchestra/testbench": "^5.0|^6.0",
+        "phpunit/phpunit": "^9.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bahramn\\EcdIpg\\": "src",
+            "Bahramn\\EcdIpg\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bahramn\\EcdIpg\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bahramn\\EcdIpg\\EcdIpgServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,39 @@
+{
+    "State": 1,
+    "ErrorDescription": "",
+    "ErrorCode": null,
+    "Res": [
+        {
+            "Amount": 1000,
+            "ReferenceNumber": "199767844710",
+            "TrackingNumber": "978895",
+            "BuyID": "1610437845360",
+            "Token": "EA7297EEA6B1E44F70261448E1BAD24E00F52A67",
+            "cardNumber": "627381*0724",
+            "ResponseCode": "00",
+            "Status": "420",
+            "Mobile": null,
+            "NationalCode": null,
+            "Time": "11:21:22",
+            "Date": "1399/10/23",
+            "AdditionalData": null,
+            "CallBackURL": "https://www.ecd-co.ir/Callback"
+        },
+        {
+            "Amount": 1000,
+            "ReferenceNumber": "0",
+            "TrackingNumber": "0",
+            "BuyID": "1610437916994",
+            "Token": "28C30FC47679C64F90E74F248CF0A4D495AFBEC7",
+            "cardNumber": "",
+            "ResponseCode": "0",
+            "Status": "1",
+            "Mobile": null,
+            "NationalCode": null,
+            "Time": "11:21:56",
+            "Date": "1399/10/23",
+            "AdditionalData": null,
+            "CallBackURL": " https://www.ecd-co.ir/Callback "
+        }
+    ]
+}
