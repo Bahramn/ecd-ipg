@@ -4,14 +4,10 @@ namespace Bahramn\EcdIpg\DTOs;
 
 use Bahramn\EcdIpg\Support\Interfaces\ReverseResultInterface;
 
-/**
- * @package Bahramn\EcdIpg\DTOs
- */
 class PaymentReverseResultData implements ReverseResultInterface
 {
     private bool $success;
     private string $message;
-
 
     public function hasReversed(): bool
     {
@@ -46,5 +42,4 @@ class PaymentReverseResultData implements ReverseResultInterface
 
         return $this;
     }
-
 }

@@ -16,15 +16,12 @@ use Bahramn\EcdIpg\Gateways\Ecd\EcdClient;
 use Bahramn\EcdIpg\Gateways\Ecd\EcdGateway;
 use Bahramn\EcdIpg\Support\InitializePostFormResult;
 use Bahramn\EcdIpg\Support\Interfaces\InitializeResultInterface;
+use Bahramn\EcdIpg\Tests\TestCase;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use Bahramn\EcdIpg\Tests\TestCase;
 
-/**
- * @package Tests\Unit\Gateways\Ecd
- */
 class EcdGatewayTest extends TestCase
 {
     /**
@@ -120,7 +117,7 @@ class EcdGatewayTest extends TestCase
         $paymentVerifyData = $this->makePaymentVerifyData();
         $request = Request::create(
             $this->getEcdCallbackUrl($paymentVerifyData->getUuid()),
-            "POST",
+            'POST',
             ['invalid' => 'request-data']
         );
 
@@ -138,7 +135,7 @@ class EcdGatewayTest extends TestCase
         $ecdClient = \Mockery::mock(EcdClient::class);
         $request = Request::create(
             $this->getEcdCallbackUrl($paymentVerifyData->getUuid()),
-            "POST",
+            'POST',
             json_decode(file_get_contents(__DIR__ . '/responses/callback-request-success.json'), true)
         );
         $ecdConformResult = EcdConfirmResponseData::createFromResponse(
@@ -166,7 +163,7 @@ class EcdGatewayTest extends TestCase
         $ecdClient = \Mockery::mock(EcdClient::class);
         $request = Request::create(
             $this->getEcdCallbackUrl($paymentVerifyData->getUuid()),
-            "POST",
+            'POST',
             json_decode(file_get_contents(__DIR__ . '/responses/callback-request-success.json'), true)
         );
         $ecdConformResult = EcdConfirmResponseData::createFromResponse(
@@ -194,7 +191,7 @@ class EcdGatewayTest extends TestCase
         $ecdClient = \Mockery::mock(EcdClient::class);
         $request = Request::create(
             $this->getEcdCallbackUrl($paymentVerifyData->getUuid()),
-            "POST",
+            'POST',
             json_decode(file_get_contents(__DIR__ . '/responses/callback-request-success.json'), true)
         );
         $ecdGateway = $this->instantiateEcdGateway($ecdClient, $request);
@@ -217,7 +214,7 @@ class EcdGatewayTest extends TestCase
         $ecdClient = \Mockery::mock(EcdClient::class);
         $request = Request::create(
             $this->getEcdCallbackUrl($paymentVerifyData->getUuid()),
-            "POST",
+            'POST',
             json_decode(file_get_contents(__DIR__ . '/responses/callback-request-success.json'), true)
         );
         $ecdGateway = $this->instantiateEcdGateway($ecdClient, $request);
@@ -238,7 +235,7 @@ class EcdGatewayTest extends TestCase
         $ecdClient = \Mockery::mock(EcdClient::class);
         $request = Request::create(
             $this->getEcdCallbackUrl($paymentVerifyData->getUuid()),
-            "POST",
+            'POST',
             json_decode(file_get_contents(__DIR__ . '/responses/callback-request-failed.json'), true)
         );
         $ecdGateway = $this->instantiateEcdGateway($ecdClient, $request);
@@ -294,7 +291,7 @@ class EcdGatewayTest extends TestCase
 
     private function instantiateEcdGateway($ecdClient, Request $request = null): EcdGateway
     {
-        $args =  ['ecdClient' => $ecdClient];
+        $args = ['ecdClient' => $ecdClient];
         if ($request) {
             $args += ['request' => $request];
         }
@@ -313,7 +310,7 @@ class EcdGatewayTest extends TestCase
     {
         return route('payment.callback', [
             'gateway' => $this->getEcdGatewayConfigData()->name,
-            'transaction_id' => $uuid
+            'transaction_id' => $uuid,
         ]);
     }
 

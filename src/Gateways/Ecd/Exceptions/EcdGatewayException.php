@@ -2,9 +2,6 @@
 
 namespace Bahramn\EcdIpg\Gateways\Ecd\Exceptions;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Ecd\Exceptions
- */
 class EcdGatewayException extends \Exception
 {
     private function errorsList(): array

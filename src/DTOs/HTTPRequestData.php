@@ -2,9 +2,6 @@
 
 namespace Bahramn\EcdIpg\DTOs;
 
-/**
- * @package Bahramn\EcdIpg\DTOs
- */
 class HTTPRequestData
 {
     public string $method;

@@ -22,7 +22,7 @@ return [
             'terminal_id' => env('ECD_TERMINAL_ID'),
             'key' => env('ECD_GATEWAY_KEY'),
             'callback_url' => '/payment/gateways/ecd/callback',
-            'locale' => 'fa'
+            'locale' => 'fa',
         ],
         'test' => [
             'name' => 'test',
@@ -30,5 +30,5 @@ return [
             'active' => env('TEST_GATEWAY_ACTIVE', false),
             'callback_url' => '/payment/gateways/test/callback',
         ],
-    ]
+    ],
 ];

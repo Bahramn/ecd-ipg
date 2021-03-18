@@ -5,12 +5,12 @@ namespace Bahramn\EcdIpg\Tests;
 use Bahramn\EcdIpg\Database\Factories\TestEcdInvoiceFactory;
 use Bahramn\EcdIpg\DTOs\PaymentInitData;
 use Bahramn\EcdIpg\EcdIpgServiceProvider;
+use Bahramn\EcdIpg\Tests\TestSupport\TestEcdInvoice;
 use Dotenv\Dotenv;
 use Faker\Factory;
 use Faker\Generator;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Bahramn\EcdIpg\Tests\TestSupport\TestEcdInvoice;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -38,11 +38,11 @@ abstract class TestCase extends BaseTestCase
 
     protected function loadEnvironmentVariables(): void
     {
-        if (! file_exists(__DIR__.'/../.env.example')) {
+        if (!file_exists(__DIR__ . '/../.env.example')) {
             return;
         }
 
-        $dotEnv = Dotenv::createImmutable(__DIR__.'/../', '.env.example');
+        $dotEnv = Dotenv::createImmutable(__DIR__ . '/../', '.env.example');
 
         $dotEnv->load();
     }
@@ -56,7 +56,7 @@ abstract class TestCase extends BaseTestCase
             'prefix' => '',
         ]);
 
-        include_once __DIR__.'/../database/migrations/create_transactions_table.php.stub';
+        include_once __DIR__ . '/../database/migrations/create_transactions_table.php.stub';
         (new \CreateTransactionsTable)->up();
     }
 
@@ -71,7 +71,7 @@ abstract class TestCase extends BaseTestCase
             ->setNid($this->faker->nationalId)
             ->setMobile($this->faker->mobileNumber)
             ->setDescription($this->faker->sentence)
-            ->setUniqueId($payable ? $payable->getUniqueId() : $this->faker->uuid)
+            ->setUniqueId($payable ? $payable->uniqueId() : $this->faker->uuid)
             ->setAmount($payable ? $payable->amount() : $this->faker->randomNumber())
             ->setCurrency($payable ? $payable->currency() : $this->faker->currencyCode);
     }

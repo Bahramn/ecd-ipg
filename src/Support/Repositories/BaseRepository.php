@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-/**
- * @package Bahramn\EcdIpg\Support\Repositories
- */
 abstract class BaseRepository implements EloquentRepositoryInterface
 {
     /**

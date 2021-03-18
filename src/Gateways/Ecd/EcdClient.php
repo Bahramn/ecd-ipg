@@ -21,9 +21,6 @@ use GuzzleHttp\RequestOptions;
 use Illuminate\Log\Logger;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Ecd
- */
 class EcdClient extends Client
 {
     use Loggable;
@@ -52,7 +49,6 @@ class EcdClient extends Client
         parent::__construct($options);
     }
 
-
     /**
      * @param EcdInitializeRequestData $data
      * @return EcdInitializeResponseData
@@ -72,7 +68,7 @@ class EcdClient extends Client
                 $httpRequestData
             );
             $result = $this->request($httpRequestData->method, $httpRequestData->uri, [
-                RequestOptions::JSON => $httpRequestData->body
+                RequestOptions::JSON => $httpRequestData->body,
             ]);
             $this->dispatchResponseReceived(
                 $data->getPaymentUuid(),
@@ -84,7 +80,7 @@ class EcdClient extends Client
             return EcdInitializeResponseData::createFromResponse($rawResponse);
         } catch (RequestException $exception) {
             $this->throwInvalidApiResponseException($exception, $httpRequestData);
-        } catch (\Exception|GuzzleException $exception) {
+        } catch (\Exception | GuzzleException $exception) {
             $this->throwInvalidApiResponseException(null, $httpRequestData);
         }
     }
@@ -105,7 +101,7 @@ class EcdClient extends Client
         try {
             $this->dispatchSendingRequest($paymentUuid, 'Sending ECD confirm request: ', $httpRequestData);
             $result = $this->request($httpRequestData->method, $httpRequestData->uri, [
-                RequestOptions::JSON => $httpRequestData->body
+                RequestOptions::JSON => $httpRequestData->body,
             ]);
             $this->dispatchResponseReceived($paymentUuid, 'Response received from ECD confirm request: ', $result);
             $rawResponse = $result->getBody()->getContents();
@@ -113,7 +109,7 @@ class EcdClient extends Client
             return EcdConfirmResponseData::createFromResponse($rawResponse);
         } catch (RequestException $exception) {
             $this->throwInvalidApiResponseException($exception, $httpRequestData);
-        } catch (\Exception|GuzzleException $exception) {
+        } catch (\Exception | GuzzleException $exception) {
             $this->throwInvalidApiResponseException(null, $httpRequestData);
         }
     }
@@ -134,7 +130,7 @@ class EcdClient extends Client
         try {
             $this->dispatchSendingRequest($paymentUuid, 'Sending ECD reverse request: ', $httpRequestData);
             $result = $this->request($httpRequestData->method, $httpRequestData->uri, [
-                RequestOptions::JSON => $httpRequestData->body
+                RequestOptions::JSON => $httpRequestData->body,
             ]);
             $this->dispatchResponseReceived($paymentUuid, 'Response received from ECD reverse request: ', $result);
             $rawResponse = $result->getBody()->getContents();
@@ -142,7 +138,7 @@ class EcdClient extends Client
             return EcdReverseResponseData::createFromResponse($rawResponse);
         } catch (RequestException $exception) {
             $this->throwInvalidApiResponseException($exception, $httpRequestData);
-        } catch (\Exception|GuzzleException $exception) {
+        } catch (\Exception | GuzzleException $exception) {
             $this->throwInvalidApiResponseException(null, $httpRequestData);
         }
     }
@@ -162,17 +158,17 @@ class EcdClient extends Client
         try {
             $this->log('Sending ECD transactions request: ', ['requestBody' => $httpRequestData->body]);
             $result = $this->request($httpRequestData->method, $httpRequestData->uri, [
-                RequestOptions::JSON => $httpRequestData->body
+                RequestOptions::JSON => $httpRequestData->body,
             ]);
             $rawResponse = $result->getBody()->getContents();
             $this->log('Response received from ECD transactions request: ', [
-                'response' => $rawResponse
+                'response' => $rawResponse,
             ]);
 
             return EcdTransactionsResponseData::createFromResponse($rawResponse);
         } catch (RequestException $exception) {
             $this->throwInvalidApiResponseException($exception, $httpRequestData);
-        } catch (\Exception|GuzzleException $exception) {
+        } catch (\Exception | GuzzleException $exception) {
             $this->throwInvalidApiResponseException(null, $httpRequestData);
         }
     }
@@ -189,7 +185,7 @@ class EcdClient extends Client
 
     /**
      * @param RequestException|null $exception
-     * @param HTTPRequestData  $httpRequestData
+     * @param HTTPRequestData $httpRequestData
      * @throws InvalidApiResponseException
      */
     private function throwInvalidApiResponseException(?RequestException $exception, HTTPRequestData $httpRequestData): void
@@ -207,8 +203,8 @@ class EcdClient extends Client
     }
 
     /**
-     * @param string          $paymentUuid
-     * @param string          $message
+     * @param string $paymentUuid
+     * @param string $message
      * @param HTTPRequestData $httpRequestData
      * @TODO: replace logging in event listener which should queue
      */
@@ -219,8 +215,8 @@ class EcdClient extends Client
     }
 
     /**
-     * @param string            $paymentUuid
-     * @param string            $message
+     * @param string $paymentUuid
+     * @param string $message
      * @param ResponseInterface $result
      */
     private function dispatchResponseReceived(string $paymentUuid, string $message, ResponseInterface $result): void

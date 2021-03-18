@@ -4,9 +4,6 @@ namespace Bahramn\EcdIpg\Exceptions;
 
 use Bahramn\EcdIpg\Models\Transaction;
 
-/**
- * @package Bahramn\EcdIpg\Exceptions
- */
 class TransactionHasBeenAlreadyPaidException extends \Exception
 {
     private Transaction $transaction;

@@ -2,16 +2,12 @@
 
 namespace Bahramn\EcdIpg\DTOs;
 
-/**
- * @package Bahramn\EcdIpg\DTOs
- */
 class GatewayConfigData
 {
     public string $name;
     public string $class;
     public bool $active;
     public array $attributes;
-
 
     /**
      * GatewayConfigData constructor.
@@ -25,9 +21,10 @@ class GatewayConfigData
             $this->class = $config['class'];
             $this->active = $config['active'];
             $this->attributes = $config;
+
             return;
         }
 
-        throw new \InvalidArgumentException("Gateway config should include name, class, active");
+        throw new \InvalidArgumentException('Gateway config should include name, class, active');
     }
 }

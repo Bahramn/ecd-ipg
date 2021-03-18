@@ -14,15 +14,12 @@ use Bahramn\EcdIpg\Gateways\Ecd\DTOs\EcdTransactionData;
 use Bahramn\EcdIpg\Gateways\Ecd\DTOs\EcdTransactionsParamsData;
 use Bahramn\EcdIpg\Gateways\Ecd\DTOs\EcdTransactionsResponseData;
 use Bahramn\EcdIpg\Gateways\Ecd\EcdClient;
+use Bahramn\EcdIpg\Tests\TestCase;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Event;
-use Bahramn\EcdIpg\Tests\TestCase;
 use Illuminate\Support\Facades\Lang;
 
-/**
- * @package Tests\Unit\GatewayClients\Ecd
- */
 class EcdClientTest extends TestCase
 {
     protected function setUp(): void
@@ -51,10 +48,11 @@ class EcdClientTest extends TestCase
         $this->assertIsString($initialResponse->getToken());
         Event::assertDispatched(GatewayHttpRequestSent::class, 1);
         Event::assertDispatched(GatewayHttpResponseReceived::class, 1);
-        Event::assertDispatched(fn(GatewayHttpRequestSent $event) => $event->paymentUuid == $data->getPaymentUuid() &&
+        Event::assertDispatched(
+            fn (GatewayHttpRequestSent $event) => $event->paymentUuid == $data->getPaymentUuid() &&
             $event->requestData->body == $data->getInitializeRequestBody()
         );
-        Event::assertDispatched(fn(GatewayHttpResponseReceived $event) => $event->paymentUuid == $data->getPaymentUuid());
+        Event::assertDispatched(fn (GatewayHttpResponseReceived $event) => $event->paymentUuid == $data->getPaymentUuid());
     }
 
     /**
@@ -94,7 +92,7 @@ class EcdClientTest extends TestCase
             ->make();
 
         $this->expectException(InvalidApiResponseException::class);
-        $this->expectExceptionMessage("Invalid response received from ECD-Gateway API");
+        $this->expectExceptionMessage('Invalid response received from ECD-Gateway API');
         $client->initialPayment($data);
         Event::assertDispatched(GatewayHttpRequestSent::class);
         Event::assertDispatched(GatewayHttpResponseReceived::class);
@@ -128,7 +126,7 @@ class EcdClientTest extends TestCase
         $client = $this->app->make(EcdClient::class, ['handler' => new EcdMockHandler()]);
 
         $this->expectException(InvalidApiResponseException::class);
-        $this->expectExceptionMessage("Invalid response received from ECD-Gateway API");
+        $this->expectExceptionMessage('Invalid response received from ECD-Gateway API');
 
         $client->confirm($token, $paymentUuid);
         Event::assertDispatched(GatewayHttpRequestSent::class);
@@ -198,7 +196,7 @@ class EcdClientTest extends TestCase
         $client = $this->app->make(EcdClient::class, ['handler' => new EcdMockHandler()]);
 
         $this->expectException(InvalidApiResponseException::class);
-        $this->expectExceptionMessage("Invalid response received from ECD-Gateway API");
+        $this->expectExceptionMessage('Invalid response received from ECD-Gateway API');
 
         $client->reverse($token, $paymentUuid);
         Event::assertDispatched(GatewayHttpRequestSent::class);
@@ -221,7 +219,7 @@ class EcdClientTest extends TestCase
         $this->assertInstanceOf(Collection::class, $result->getTransactions());
         $this->assertTrue($result->isSucceed());
         $this->assertNotEmpty($result->getTransactions());
-        $result->getTransactions()->each(fn($item) => $this->assertInstanceOf(EcdTransactionData::class, $item));
+        $result->getTransactions()->each(fn ($item) => $this->assertInstanceOf(EcdTransactionData::class, $item));
     }
 
     /**
@@ -256,5 +254,4 @@ class EcdClientTest extends TestCase
     {
         return new GatewayConfigData(config('ecd-ipg.gateways.ecd'));
     }
-
 }

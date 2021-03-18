@@ -6,9 +6,6 @@ use Bahramn\EcdIpg\DTOs\HTTPRequestData;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * @package Bahramn\EcdIpg\Events
- */
 class GatewayHttpRequestSent
 {
     use Dispatchable, SerializesModels;

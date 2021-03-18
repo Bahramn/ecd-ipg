@@ -2,8 +2,8 @@
 
 namespace Bahramn\EcdIpg\Payment;
 
-use Bahramn\EcdIpg\DTOs\PaymentVerifyData;
 use Bahramn\EcdIpg\DTOs\PaymentInitData;
+use Bahramn\EcdIpg\DTOs\PaymentVerifyData;
 use Bahramn\EcdIpg\Exceptions\PaymentConfirmationFailedException;
 use Bahramn\EcdIpg\Exceptions\PaymentGatewayException;
 use Bahramn\EcdIpg\Exceptions\PaymentInitializeFailedException;
@@ -17,9 +17,6 @@ use Bahramn\EcdIpg\Traits\Payable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-/**
- * @package Bahramn\EcdIpg\Payment
- */
 class PaymentManager implements Payment
 {
     /**
@@ -134,7 +131,6 @@ class PaymentManager implements Payment
         }
     }
 
-
     /**
      * @return Transaction
      */
@@ -177,7 +173,7 @@ class PaymentManager implements Payment
     }
 
     /**
-     * @throws  PaymentConfirmationFailedException
+     * @throws PaymentConfirmationFailedException
      * @throws TransactionHasBeenAlreadyPaidException
      * @throws TransactionHasBeenAlreadyFailedException
      */

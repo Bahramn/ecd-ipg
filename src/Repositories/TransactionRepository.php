@@ -12,12 +12,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Str;
 
-/**
- * @package Bahramn\EcdIpg\Repositories
- */
 class TransactionRepository extends BaseRepository
 {
-
     /**
      * @param string $transactionUuid
      * @return Transaction|Model
@@ -29,7 +25,7 @@ class TransactionRepository extends BaseRepository
     }
 
     /**
-     * @param Model|Payable   $model
+     * @param Model|Payable $model
      * @param PaymentInitData $initPaymentData
      * @return Transaction
      */
@@ -43,7 +39,7 @@ class TransactionRepository extends BaseRepository
             'gateway' => $initPaymentData->getGateway(),
             'currency' => $initPaymentData->getCurrency(),
             'payer_mobile' => $initPaymentData->getMobile(),
-            'description' => $initPaymentData->getDescription()
+            'description' => $initPaymentData->getDescription(),
         ]);
     }
 

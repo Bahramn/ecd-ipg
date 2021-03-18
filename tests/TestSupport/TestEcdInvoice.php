@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property float total_amount
  * @property string uuid
  * @property string status
- *
- * @package Tests\TestSupport
  */
 class TestEcdInvoice extends Model
 {
@@ -37,7 +35,7 @@ class TestEcdInvoice extends Model
         return 'IRR';
     }
 
-    public function getUniqueId(): string
+    public function uniqueId(): string
     {
         return $this->uuid;
     }

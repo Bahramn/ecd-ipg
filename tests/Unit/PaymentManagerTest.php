@@ -5,13 +5,13 @@ namespace Bahramn\EcdIpg\Tests\Unit;
 use Bahramn\EcdIpg\DTOs\PaymentInitData;
 use Bahramn\EcdIpg\Exceptions\PaymentGatewayException;
 use Bahramn\EcdIpg\Models\Transaction;
-use Bahramn\EcdIpg\Payment\PaymentManager;
 use Bahramn\EcdIpg\Payment\Payment;
+use Bahramn\EcdIpg\Payment\PaymentManager;
 use Bahramn\EcdIpg\Support\InitializePostFormResult;
 use Bahramn\EcdIpg\Support\Interfaces\InitializeResultInterface;
+use Bahramn\EcdIpg\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\View\View;
-use Bahramn\EcdIpg\Tests\TestCase;
 
 class PaymentManagerTest extends TestCase
 {
@@ -84,7 +84,7 @@ class PaymentManagerTest extends TestCase
             'gateway' => $paymentInitData->getGateway(),
             'payer_mobile' => $paymentInitData->getMobile(),
             'payer_nid' => $paymentInitData->getNid(),
-            'description' => $paymentInitData->getDescription()
+            'description' => $paymentInitData->getDescription(),
         ]);
     }
 
@@ -96,8 +96,8 @@ class PaymentManagerTest extends TestCase
         $paymentManager = \Mockery::mock(Payment::class);
         $this->app->instance(Payment::class, $paymentManager);
         $token = $this->faker->sha1;
-        $ecdInitializeResult = new InitializePostFormResult($token, "action-sample", [
-            'token' => $token
+        $ecdInitializeResult = new InitializePostFormResult($token, 'action-sample', [
+            'token' => $token,
         ]);
 
         $paymentManager->shouldReceive('setPayable->readyInitialize->initialize->getResponse')

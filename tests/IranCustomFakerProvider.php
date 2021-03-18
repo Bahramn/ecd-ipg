@@ -7,12 +7,11 @@ use Faker\Provider\Base as BaseProvider;
 /**
  * @property-read $mobileNumber
  * @property-read $nationalId
- * @package Tests
  */
 class IranCustomFakerProvider extends BaseProvider
 {
     const MOBILE_PREFIXES = [
-        912 , 938 , 935 , 921 , 901 , 921 , 919
+        912, 938, 935, 921, 901, 921, 919,
     ];
 
     public function mobileNumber(): string

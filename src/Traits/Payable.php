@@ -16,5 +16,5 @@ trait Payable
 
     abstract public function currency(): string;
 
-    abstract public function getUniqueId(): string;
+    abstract public function uniqueId(): string;
 }

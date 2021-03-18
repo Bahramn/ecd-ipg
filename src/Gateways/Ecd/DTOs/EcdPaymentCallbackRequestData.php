@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use phpDocumentor\Reflection\Types\Null_;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Ecd\DTOs
- */
 class EcdPaymentCallbackRequestData
 {
     private int $state;
@@ -22,7 +19,6 @@ class EcdPaymentCallbackRequestData
     private string $buyId;
     private string $token;
     private string $transactionUuid;
-
 
     /**
      * @param Request $request
@@ -44,7 +40,7 @@ class EcdPaymentCallbackRequestData
             'Token' => ['required', 'string'],
         ])->validate();
 
-        $instance  = new static;
+        $instance = new static;
         $instance->state = $request->input('State');
         $instance->errorCode = $request->input('ErrorCode');
         $instance->errorDescription = $request->input('ErrorDescription');

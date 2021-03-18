@@ -5,9 +5,6 @@ namespace Bahramn\EcdIpg\Support\Interfaces;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-/**
- * @package Bahramn\EcdIpg\Payment
- */
 interface InitializeResultInterface
 {
     /**
@@ -39,7 +36,7 @@ interface InitializeResultInterface
     public function getAdditionalData(): array;
 
     /**
-     * Returns the gateway unique id for transaction has initialized
+     * Returns the gateway unique id for transaction has initialized.
      *
      * @return string
      */

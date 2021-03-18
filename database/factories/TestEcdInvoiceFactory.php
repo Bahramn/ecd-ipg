@@ -24,7 +24,7 @@ class TestEcdInvoiceFactory extends Factory
         return [
             'status' => $this->faker->randomElement(TestEcdInvoice::STATUSES),
             'total_amount' => $this->faker->randomNumber(4, true),
-            'uuid' => $this->faker->uuid
+            'uuid' => $this->faker->uuid,
         ];
     }
 

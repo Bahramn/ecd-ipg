@@ -6,9 +6,6 @@ use GuzzleHttp\Promise\FulfilledPromise;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\RequestInterface;
 
-/**
- * @package Tests\Unit\GatewayClients\Ecd
- */
 class EcdMockHandler
 {
     public function __invoke(RequestInterface $request, array $options): FulfilledPromise
@@ -85,6 +82,6 @@ class EcdMockHandler
 
     private function loadJsonFile(string $fileName): string
     {
-        return file_get_contents(__DIR__.'/responses/'.$fileName.'.json');
+        return file_get_contents(__DIR__ . '/responses/' . $fileName . '.json');
     }
 }

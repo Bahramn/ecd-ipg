@@ -2,9 +2,6 @@
 
 namespace Bahramn\EcdIpg\DTOs;
 
-/**
- * @package Bahramn\EcdIpg\DTOs
- */
 class PaymentVerifyData
 {
     public float $amount;
@@ -19,6 +16,7 @@ class PaymentVerifyData
     public function setAmount(float $amount): self
     {
         $this->amount = $amount;
+
         return $this;
     }
 
@@ -45,6 +43,7 @@ class PaymentVerifyData
     public function setUuid(string $uuid): self
     {
         $this->uuid = $uuid;
+
         return $this;
     }
 
@@ -63,6 +62,7 @@ class PaymentVerifyData
     public function setCurrency(string $currency): self
     {
         $this->currency = $currency;
+
         return $this;
     }
 
@@ -81,6 +81,7 @@ class PaymentVerifyData
     public function setGateway(string $gateway): self
     {
         $this->gateway = $gateway;
+
         return $this;
     }
 }

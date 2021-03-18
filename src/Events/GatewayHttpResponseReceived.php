@@ -6,9 +6,6 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @package Bahramn\EcdIpg\Events
- */
 class GatewayHttpResponseReceived
 {
     use Dispatchable, SerializesModels;
@@ -23,5 +20,4 @@ class GatewayHttpResponseReceived
         $this->result = $result;
         $this->message = $message;
     }
-
 }

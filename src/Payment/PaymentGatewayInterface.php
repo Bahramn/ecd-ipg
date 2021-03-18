@@ -8,11 +8,10 @@ use Bahramn\EcdIpg\Support\Interfaces\ConfirmationResultInterface;
 use Bahramn\EcdIpg\Support\Interfaces\InitializeResultInterface;
 use Bahramn\EcdIpg\Support\Interfaces\ReverseResultInterface;
 
-
 interface PaymentGatewayInterface
 {
     /**
-     * Determine the gateway is active or not
+     * Determine the gateway is active or not.
      * @return bool
      */
     public function isActive(): bool;
@@ -28,7 +27,6 @@ interface PaymentGatewayInterface
      * @throws PaymentConfirmationFailedException
      */
     public function confirm(): ConfirmationResultInterface;
-
 
     /**
      * @param string $uuid

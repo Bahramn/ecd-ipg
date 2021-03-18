@@ -5,9 +5,6 @@ namespace Bahramn\EcdIpg\Gateways\Ecd\DTOs;
 use Bahramn\EcdIpg\Exceptions\InvalidApiResponseException;
 use Illuminate\Support\Facades\Lang;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Ecd\DTOs
- */
 class EcdConfirmResponseData
 {
     private int $state;

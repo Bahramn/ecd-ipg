@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::any('payment/gateways/{gateway}/callback', TransactionCallbackController::class)
     ->name('payment.callback');

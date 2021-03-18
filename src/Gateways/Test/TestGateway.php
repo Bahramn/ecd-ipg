@@ -11,12 +11,8 @@ use Bahramn\EcdIpg\Support\Interfaces\ConfirmationResultInterface;
 use Bahramn\EcdIpg\Support\Interfaces\InitializeResultInterface;
 use Bahramn\EcdIpg\Support\Interfaces\ReverseResultInterface;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Test
- */
 class TestGateway extends AbstractGateway
 {
-
     public function initPayment(): InitializeResultInterface
     {
         // TODO: Implement initPayment() method.

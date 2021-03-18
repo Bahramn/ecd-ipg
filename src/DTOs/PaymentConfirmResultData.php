@@ -4,9 +4,6 @@ namespace Bahramn\EcdIpg\DTOs;
 
 use Bahramn\EcdIpg\Support\Interfaces\ConfirmationResultInterface;
 
-/**
- * @package Bahramn\EcdIpg\DTOs
- */
 class PaymentConfirmResultData implements ConfirmationResultInterface
 {
     private bool $status;
@@ -14,7 +11,6 @@ class PaymentConfirmResultData implements ConfirmationResultInterface
     private ?string $rrn;
     private ?string $stan;
     private bool $shouldConfirmService;
-
 
     /**
      * @param bool $shouldConfirmService
@@ -32,7 +28,6 @@ class PaymentConfirmResultData implements ConfirmationResultInterface
         return $this->status;
     }
 
-
     /**
      * @param string $status
      * @return $this
@@ -40,6 +35,7 @@ class PaymentConfirmResultData implements ConfirmationResultInterface
     public function setStatus(string $status): self
     {
         $this->status = $status;
+
         return $this;
     }
 
@@ -51,7 +47,6 @@ class PaymentConfirmResultData implements ConfirmationResultInterface
         return $this->rrn;
     }
 
-
     /**
      * @param string|null $rrn
      * @return $this
@@ -59,6 +54,7 @@ class PaymentConfirmResultData implements ConfirmationResultInterface
     public function setRrn(?string $rrn): self
     {
         $this->rrn = $rrn;
+
         return $this;
     }
 
@@ -70,7 +66,6 @@ class PaymentConfirmResultData implements ConfirmationResultInterface
         return $this->stan;
     }
 
-
     /**
      * @param string|null $stan
      * @return $this
@@ -78,15 +73,16 @@ class PaymentConfirmResultData implements ConfirmationResultInterface
     public function setStan(?string $stan): self
     {
         $this->stan = $stan;
+
         return $this;
     }
 
     public function setMessage(string $message): self
     {
         $this->message = $message;
+
         return $this;
     }
-
 
     public function isSucceed(): bool
     {
@@ -95,7 +91,7 @@ class PaymentConfirmResultData implements ConfirmationResultInterface
 
     public function getMessage(): string
     {
-        return $this->isSucceed() ? "success" : $this->message;
+        return $this->isSucceed() ? 'success' : $this->message;
     }
 
     public function shouldConfirmService(): bool

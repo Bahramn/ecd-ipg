@@ -1,4 +1,5 @@
 <?php
+
 namespace Bahramn\EcdIpg\Payment;
 
 use Bahramn\EcdIpg\DTOs\GatewayConfigData;
@@ -7,13 +8,10 @@ use Exception;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
 
-/**
- * @package Bahramn\EcdIpg\Payment
- */
 class PaymentGatewayFactory
 {
     /**
-     * @param string            $gateway
+     * @param string $gateway
      * @return AbstractGateway
      * @throws BindingResolutionException|Exception
      */
@@ -27,7 +25,7 @@ class PaymentGatewayFactory
         if (!is_null($configData)) {
             return app()->make($configData->class)->setConfig($configData);
         }
-        throw new Exception($gateway . " gateway is not available");
+        throw new Exception($gateway . ' gateway is not available');
     }
 
     /**
@@ -47,7 +45,6 @@ class PaymentGatewayFactory
             ->map(fn (GatewayConfigData $configData) => $configData->name)
             ->toArray();
     }
-
 
     /**
      * @return Collection

@@ -41,7 +41,7 @@
         }
     },
     "scripts": {
-        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "format": "vendor/bin/php-cs-fixer fix . --config .php_cs.php --allow-risky=yes",
         "test": "vendor/bin/phpunit"
     },
     "config": {

@@ -5,9 +5,6 @@ namespace Bahramn\EcdIpg\Support\Interfaces;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-/**
- * @package Bahramn\EcdIpg\Support\Interfaces
- */
 interface EloquentRepositoryInterface
 {
     /**

@@ -7,9 +7,6 @@ use Bahramn\EcdIpg\DTOs\PaymentInitData;
 use Bahramn\EcdIpg\DTOs\PaymentVerifyData;
 use Bahramn\EcdIpg\Payment\PaymentGatewayInterface;
 
-/**
- * @package Bahramn\EcdIpg\Gateways
- */
 abstract class AbstractGateway implements PaymentGatewayInterface
 {
     protected PaymentInitData $paymentInitData;
@@ -17,7 +14,7 @@ abstract class AbstractGateway implements PaymentGatewayInterface
     protected GatewayConfigData $config;
 
     /**
-     * Get Concrete gateway activation
+     * Get Concrete gateway activation.
      * @return bool
      */
     public function isActive(): bool

@@ -5,16 +5,12 @@ namespace Bahramn\EcdIpg\Gateways\Ecd\DTOs;
 use Bahramn\EcdIpg\Exceptions\InvalidApiResponseException;
 use Illuminate\Support\Collection;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Ecd\DTOs
- */
 class EcdTransactionsResponseData
 {
     private int $state;
     private ?string $errorDescription;
     private ?string $errorCode;
     private Collection $transactions;
-
 
     /**
      * @param string $rawResponse
@@ -49,6 +45,4 @@ class EcdTransactionsResponseData
     {
         return $this->transactions;
     }
-
-
 }

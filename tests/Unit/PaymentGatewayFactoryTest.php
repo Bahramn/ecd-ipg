@@ -9,7 +9,6 @@ use Bahramn\EcdIpg\Tests\TestCase;
 
 class PaymentGatewayFactoryTest extends TestCase
 {
-
     /**
      * @test
      */
@@ -20,7 +19,6 @@ class PaymentGatewayFactoryTest extends TestCase
 
         $this->assertEquals($names, $gatewayFactory->getGatewayNames());
     }
-
 
     /**
      * @test
@@ -72,5 +70,4 @@ class PaymentGatewayFactoryTest extends TestCase
 
         $gatewayFactory->getInstance($this->faker->name);
     }
-
 }

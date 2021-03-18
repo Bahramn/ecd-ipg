@@ -7,9 +7,6 @@ use Illuminate\Contracts\Support\Arrayable;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @package Bahramn\EcdIpg\Exceptions
- */
 class InvalidApiResponseException extends \Exception implements Arrayable
 {
     private ?RequestInterface $request;

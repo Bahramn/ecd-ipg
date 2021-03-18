@@ -12,12 +12,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator;
 
-/**
- * @package Bahramn\EcdIpg\Http\Controller
- */
 class TransactionCallbackController extends Controller
 {
-
     private Payment $payment;
     private UrlGenerator $urlGenerator;
 
@@ -28,7 +24,7 @@ class TransactionCallbackController extends Controller
     }
 
     /**
-     * @param string  $gateway
+     * @param string $gateway
      * @param Request $request
      * @return RedirectResponse
      */
@@ -49,7 +45,7 @@ class TransactionCallbackController extends Controller
             $transaction = $e->getTransaction();
         } catch (PaymentConfirmationFailedException | PaymentGatewayException $e) {
             $transaction = null;
-        };
+        }
 
         return redirect(
             $this->getResultRedirectUrl($success, $transaction)
@@ -57,7 +53,7 @@ class TransactionCallbackController extends Controller
     }
 
     /**
-     * @param bool             $success
+     * @param bool $success
      * @param Transaction|null $transaction
      * @return string
      */
@@ -66,7 +62,7 @@ class TransactionCallbackController extends Controller
         $key = $success ? 'success_redirect_url' : 'failed_redirect_url';
         $params = $transaction ? [
             config('ecd-ipg.after_payment.transaction_uuid_param_name') => $transaction->uuid,
-            config('ecd-ipg.after_payment.payable_id_param_name') => $transaction->payable->getUniqueId(),
+            config('ecd-ipg.after_payment.payable_id_param_name') => $transaction->payable->uniqueId(),
         ] : [];
 
         return $this->urlGenerator->to(config('ecd-ipg.after_payment.' . $key), $params);

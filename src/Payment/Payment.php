@@ -15,10 +15,9 @@ use Illuminate\Database\Eloquent\Model;
 
 interface Payment
 {
-
     /**
      * Set the gateway name, if not set the default gateway in config will instantiate
-     * will throws exception if not exists or active
+     * will throws exception if not exists or active.
      *
      * @param string $gatewayName
      * @return $this
@@ -27,7 +26,7 @@ interface Payment
     public function setGatewayName(string $gatewayName): self;
 
     /**
-     * Set model which has Payable trait
+     * Set model which has Payable trait.
      *
      * @param Model|Payable $model
      * @return $this
@@ -35,7 +34,7 @@ interface Payment
     public function setPayable(Model $model): self;
 
     /**
-     * Create transaction and
+     * Create transaction and.
      *
      * @param PaymentInitData $paymentInitData
      * @return Payment

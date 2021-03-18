@@ -5,9 +5,6 @@ namespace Bahramn\EcdIpg\Gateways\Ecd\DTOs;
 use Bahramn\EcdIpg\DTOs\PaymentInitData;
 use Carbon\Carbon;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Ecd\DTOs
- */
 class EcdInitializeRequestData
 {
     private string $date;
@@ -15,16 +12,17 @@ class EcdInitializeRequestData
     private array $config;
     private PaymentInitData $initPaymentData;
 
-
     public function setInitPaymentData(PaymentInitData $initPaymentData): self
     {
         $this->initPaymentData = $initPaymentData;
+
         return $this;
     }
 
     public function setConfig(array $config): self
     {
         $this->config = $config;
+
         return $this;
     }
 
@@ -50,7 +48,7 @@ class EcdInitializeRequestData
             'CheckSum' => $this->makeCheckSum(),
             'NationalCode' => $this->initPaymentData->getNid(),
             'Mobile' => $this->initPaymentData->getMobile(),
-            'AdditionalData' => $this->initPaymentData->getDescription()
+            'AdditionalData' => $this->initPaymentData->getDescription(),
         ];
     }
 
@@ -73,7 +71,7 @@ class EcdInitializeRequestData
     {
         return route('payment.callback', [
             'gateway' => $this->config['name'],
-            'transaction_id' => $this->initPaymentData->getUuid()
+            'transaction_id' => $this->initPaymentData->getUuid(),
         ]);
     }
 

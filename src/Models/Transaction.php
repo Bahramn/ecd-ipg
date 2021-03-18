@@ -22,8 +22,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property Model|Payable payable
  * @property string|null   message
  * @property array|null    requests
- *
- * @package Bahramn\EcdIpg\Models
  */
 class Transaction extends Model
 {
@@ -56,5 +54,4 @@ class Transaction extends Model
     {
         return $this->morphTo();
     }
-
 }

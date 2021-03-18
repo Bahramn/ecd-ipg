@@ -5,9 +5,6 @@ namespace Bahramn\EcdIpg\Tests\Unit;
 use Bahramn\EcdIpg\DTOs\PaymentInitData;
 use Bahramn\EcdIpg\Tests\TestCase;
 
-/**
- * @package Tests\Unit
- */
 class PaymentInitializerDataTest extends TestCase
 {
     public function test_it_could_create_payment_initialize_dto_with_correct_data()

@@ -2,9 +2,6 @@
 
 namespace Bahramn\EcdIpg\Gateways\Ecd\DTOs;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Ecd\DTOs
- */
 class EcdTransactionsParamsData
 {
     public ?string $token = null;
@@ -17,36 +14,42 @@ class EcdTransactionsParamsData
     public function setToken(?string $token): self
     {
         $this->token = $token;
+
         return $this;
     }
 
     public function setPaymentUuid(?string $paymentUuid): self
     {
         $this->paymentUuid = $paymentUuid;
+
         return $this;
     }
 
     public function setRrn(?string $rrn): self
     {
         $this->rrn = $rrn;
+
         return $this;
     }
 
     public function setStatus(?int $status): self
     {
         $this->status = $status;
+
         return $this;
     }
 
     public function setDate(?string $date): self
     {
         $this->date = $date;
+
         return $this;
     }
 
     public function setCode(?string $code): self
     {
         $this->code = $code;
+
         return $this;
     }
 
@@ -57,12 +60,12 @@ class EcdTransactionsParamsData
           'Key' => config('ecd-ipg.gateways.ecd.key'),
         ];
         $mappedParams = [
-          'Token'  => 'token',
-          'Status'  => 'status',
-          'Date'  => 'date',
-          'ResponseCode'  => 'code',
-          'BuyID'  => 'paymentUuid',
-          'ReferenceNumber'  => 'rrn',
+          'Token' => 'token',
+          'Status' => 'status',
+          'Date' => 'date',
+          'ResponseCode' => 'code',
+          'BuyID' => 'paymentUuid',
+          'ReferenceNumber' => 'rrn',
         ];
         foreach ($mappedParams as $key => $attribute) {
             if (!is_null($this->$attribute)) {
@@ -72,5 +75,4 @@ class EcdTransactionsParamsData
 
         return $params;
     }
-
 }

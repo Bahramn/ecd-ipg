@@ -2,9 +2,6 @@
 
 namespace Bahramn\EcdIpg\Gateways\Ecd\DTOs;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Ecd\DTOs
- */
 class EcdTransactionData
 {
     public string $amount;
@@ -43,5 +40,4 @@ class EcdTransactionData
 
         return $instance;
     }
-
 }

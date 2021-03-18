@@ -5,9 +5,6 @@ namespace Bahramn\EcdIpg\Exceptions;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Log\Logger;
 
-/**
- * @package Bahramn\EcdIpg\Exceptions
- */
 class PaymentConfirmationFailedException extends \Exception
 {
     private string $errorMessage;
@@ -18,10 +15,10 @@ class PaymentConfirmationFailedException extends \Exception
      * PaymentConfirmationFailedException constructor.
      *
      * @param string $message
-     * @param array  $context
+     * @param array $context
      * @throws BindingResolutionException
      */
-    public function __construct($message = "", array $context = [])
+    public function __construct($message = '', array $context = [])
     {
         $this->errorMessage = $message;
         $this->context = $context;

@@ -7,9 +7,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-/**
- * @package Bahramn\EcdIpg\Payment
- */
 class InitializePostFormResult implements InitializeResultInterface
 {
     private string $actionURL;
@@ -21,7 +18,7 @@ class InitializePostFormResult implements InitializeResultInterface
      *
      * @param string $token
      * @param string $actionURL
-     * @param array  $formData
+     * @param array $formData
      */
     public function __construct(string $token, string $actionURL, array $formData)
     {

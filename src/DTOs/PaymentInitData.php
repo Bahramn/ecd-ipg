@@ -2,10 +2,8 @@
 
 namespace Bahramn\EcdIpg\DTOs;
 
-
 /**
- * Data to initializing a payment
- * @package Bahramn\EcdIpg\DTOs
+ * Data to initializing a payment.
  */
 class PaymentInitData
 {
@@ -24,6 +22,7 @@ class PaymentInitData
     public function setAmount(float $amount): self
     {
         $this->amount = $amount;
+
         return $this;
     }
 
@@ -34,6 +33,7 @@ class PaymentInitData
     public function setUniqueId(string $uuid): self
     {
         $this->uuid = $uuid;
+
         return $this;
     }
 
@@ -68,6 +68,7 @@ class PaymentInitData
     public function setGateway(string $gateway): self
     {
         $this->gateway = $gateway;
+
         return $this;
     }
 
@@ -86,9 +87,9 @@ class PaymentInitData
     public function setCurrency(string $currency): self
     {
         $this->currency = $currency;
+
         return $this;
     }
-
 
     /**
      * @return string|null
@@ -105,6 +106,7 @@ class PaymentInitData
     public function setMobile(?string $mobile): self
     {
         $this->mobile = $mobile;
+
         return $this;
     }
 
@@ -123,6 +125,7 @@ class PaymentInitData
     public function setNid(?string $nid): self
     {
         $this->nid = $nid;
+
         return $this;
     }
 
@@ -141,6 +144,7 @@ class PaymentInitData
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
         return $this;
     }
 }

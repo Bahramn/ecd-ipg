@@ -5,10 +5,6 @@ namespace Bahramn\EcdIpg\Support;
 use Bahramn\EcdIpg\Support\Interfaces\InitializeResultInterface;
 use Illuminate\Http\RedirectResponse;
 
-
-/**
- * @package Bahramn\EcdIpg\Payment
- */
 class InitializeRedirectURLResult implements InitializeResultInterface
 {
     private string $redirectURL;

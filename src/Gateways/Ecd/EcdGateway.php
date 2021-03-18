@@ -8,17 +8,14 @@ use Bahramn\EcdIpg\Exceptions\InvalidApiResponseException;
 use Bahramn\EcdIpg\Exceptions\PaymentConfirmationFailedException;
 use Bahramn\EcdIpg\Exceptions\PaymentInitializeFailedException;
 use Bahramn\EcdIpg\Gateways\AbstractGateway;
-use Bahramn\EcdIpg\Gateways\Ecd\DTOs\EcdPaymentCallbackRequestData;
 use Bahramn\EcdIpg\Gateways\Ecd\DTOs\EcdInitializeRequestData;
+use Bahramn\EcdIpg\Gateways\Ecd\DTOs\EcdPaymentCallbackRequestData;
 use Bahramn\EcdIpg\Support\InitializePostFormResult;
 use Bahramn\EcdIpg\Support\Interfaces\ConfirmationResultInterface;
 use Bahramn\EcdIpg\Support\Interfaces\ReverseResultInterface;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-/**
- * @package Bahramn\EcdIpg\Gateways\Ecd
- */
 class EcdGateway extends AbstractGateway
 {
     private EcdClient $ecdClient;
@@ -45,7 +42,7 @@ class EcdGateway extends AbstractGateway
             $initResponse = $this->ecdClient->initialPayment($initRequest);
             if ($initResponse->isSuccess()) {
                 return new InitializePostFormResult($initResponse->getToken(), $this->getFormActionUrl(), [
-                    'token' => $initResponse->getToken()
+                    'token' => $initResponse->getToken(),
                 ]);
             }
             throw new PaymentInitializeFailedException($initResponse->getMessage());
@@ -53,7 +50,6 @@ class EcdGateway extends AbstractGateway
             throw new PaymentInitializeFailedException($exception->getMessage(), $exception->toArray());
         }
     }
-
 
     /**
      * @return ConfirmationResultInterface
@@ -75,19 +71,18 @@ class EcdGateway extends AbstractGateway
             return $confirmResultData;
         } catch (ValidationException $exception) {
             throw new PaymentConfirmationFailedException(
-                "data received from ECD callback is not valid.",
+                'data received from ECD callback is not valid.',
                 $this->request->all()
             );
         } catch (InvalidApiResponseException $exception) {
             throw new PaymentConfirmationFailedException(
-                "Ecd payment confirmation failed.",
+                'Ecd payment confirmation failed.',
                 $exception->toArray()
             );
         } catch (\Exception $exception) {
-            throw new PaymentConfirmationFailedException("Ecd confirmation has unexpected error.");
+            throw new PaymentConfirmationFailedException('Ecd confirmation has unexpected error.');
         }
     }
-
 
     /**
      * @param string $uuid
@@ -103,7 +98,7 @@ class EcdGateway extends AbstractGateway
             return $reverseData
                 ->setSuccess($reverseResult->hasReversed())
                 ->setMessage($reverseResult->getMessage());
-        }catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             return $reverseData->setSuccess(false)
                 ->setMessage($exception->getMessage());
         }
@@ -120,13 +115,13 @@ class EcdGateway extends AbstractGateway
             'transaction' => $this->paymentVerifyData->getUuid(),
             'transactionAmount' => $this->paymentVerifyData->getAmount(),
             'callbackAmount' => $callbackData->getAmount(),
-            'token' => $callbackData->getToken()
+            'token' => $callbackData->getToken(),
         ];
         if ($this->paymentVerifyData->getAmount() != $callbackData->getAmount()) {
-            throw new PaymentConfirmationFailedException("transaction amount is not equal to callback.", $context);
+            throw new PaymentConfirmationFailedException('transaction amount is not equal to callback.', $context);
         }
-        if (! $callbackData->isSucceed()) {
-            throw new PaymentConfirmationFailedException("payment verification failed by ECD", $context);
+        if (!$callbackData->isSucceed()) {
+            throw new PaymentConfirmationFailedException('payment verification failed by ECD', $context);
         }
     }
 
