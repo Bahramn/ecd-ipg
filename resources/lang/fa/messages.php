@@ -8,7 +8,8 @@ return [
     'transaction_not_found' => 'تراکنش پیدا نشد',
     'transaction_not_initialized' => 'در خواست پرداخت تراکنش انجام نشده است',
     'reversed' => 'تراکنش برگشت داده شد',
-    '' => '',
+    'waiting_message_to_payment' => 'لطفا منتظر باشید در حال انتفال به درگاه پرداخت ...',
+    'redirecting_page_title' => 'انتقال به درگاه',
     'ecd_error_codes' => [
         '100' => 'خطای سیستمی در متد',
         '101' => 'فرمت داده های ورودی نا معتبر است.',
